@@ -1,5 +1,7 @@
 # Soccerama
 
+The gem is development currently and so his code might be smell.
+
 ## Installation
 
 Add this line to your application's Gemfile:
