@@ -12,7 +12,6 @@ module Soccerama
         options[api_token: @api_token]
         response = self.class.send(http_method, path)
         resp = JSON.parse(response.body)
-        puts resp
         unless resp['error'].nil?
           if resp['error']['code'] == 401
             raise Soccerama::Exceptions::UnpaidPlanException

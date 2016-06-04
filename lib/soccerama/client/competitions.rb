@@ -4,7 +4,7 @@ module Soccerama
 
       def competitions(competition_id = nil)
         if competition_id.nil?
-          get('/competitions')
+          get('/competitions')['data']
         else
           get("/competitions/#{competition_id}")
         end

@@ -6,7 +6,7 @@ module Soccerama
 
       def seasons(season_id = nil)
         if season_id.nil?
-          get('/seasons')
+          get('/seasons')['data']
         else
           get("/seasons/#{season_id}")
         end

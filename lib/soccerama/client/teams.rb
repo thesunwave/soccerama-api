@@ -3,7 +3,7 @@ module Soccerama
     module Teams
 
       def teams_by_season(season_id)
-          get("/teams/season/#{season_id}")
+        get("/teams/season/#{season_id}")['data']
       end
 
       def teams_by_id(team_id)
