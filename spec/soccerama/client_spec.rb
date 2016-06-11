@@ -9,6 +9,10 @@ describe Soccerama::Client do
       expect(subject.competitions).to be_a Array
     end
 
+    it 'with include' do
+      expect(subject.competitions(options: :seasons)).to be_a Array
+    end
+
     it 'with params' do
       expect(subject.competitions(13)).to be_a Hash
     end

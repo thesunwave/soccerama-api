@@ -4,11 +4,11 @@ module Soccerama
   class Client
     module Seasons
 
-      def seasons(season_id = nil)
-        if season_id.nil?
-          get('/seasons')['data']
+      def seasons(season_id = nil, options: nil)
+        unless season_id
+          get('/seasons', { include: options })['data']
         else
-          get("/seasons/#{season_id}")
+          get("/seasons/#{season_id}", { include: options })
         end
       end
     end
