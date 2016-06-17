@@ -6,7 +6,7 @@ module Soccerama
         get("/matches/#{match_id}", { include: options })
       end
 
-      def events_in_match(match_id)
+      def events_in_match(match_id, options: nil)
         get("/events/match/#{match_id}", { include: options })
       end
     end
