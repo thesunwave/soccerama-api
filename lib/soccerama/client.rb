@@ -1,20 +1,23 @@
-require 'soccerama/client/connection'
-require 'soccerama/client/competitions'
-require 'soccerama/client/seasons'
-require 'soccerama/client/teams'
-require 'soccerama/client/match'
-require 'soccerama/client/player'
+Dir[File.dirname(__FILE__) + '/client/*.rb'].each {|file| require file }
 require 'soccerama/exceptions'
 
 module Soccerama
   class Client
     include HTTParty
-    include Soccerama::Client::Connection
+    include Soccerama::Client::Commentaries
     include Soccerama::Client::Competitions
-    include Soccerama::Client::Seasons
-    include Soccerama::Client::Teams
+    include Soccerama::Client::Connection
+    include Soccerama::Client::Countries
+    include Soccerama::Client::Events
+    include Soccerama::Client::Livescores
     include Soccerama::Client::Match
     include Soccerama::Client::Player
+    include Soccerama::Client::Results
+    include Soccerama::Client::Seasons
+    include Soccerama::Client::Standings
+    include Soccerama::Client::Statistics
+    include Soccerama::Client::Teams
+    include Soccerama::Client::VideoHighlights
 
     URL_PREFIX = 'https://api.soccerama.pro/%{api_version}/'
     format :json
