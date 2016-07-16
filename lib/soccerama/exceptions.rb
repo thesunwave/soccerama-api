@@ -1,6 +1,6 @@
 module Soccerama
   module Exceptions
-    class UnpaidPlanException < Class.new(StandardError); end
-    class InvalidRequest < Class.new(StandardError); end
+    UnpaidPlanException = Class.new(StandardError)
+    InvalidRequest = Class.new(StandardError)
   end
 end

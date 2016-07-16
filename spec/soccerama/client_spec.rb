@@ -5,40 +5,62 @@ describe Soccerama::Client do
 
 
   describe '.competitions' do
-    it 'without params' do
-      expect(subject.competitions).to be_a Array
+    it 'must return array of competitions' do
+      VCR.use_cassette('competitions_empty') do
+        expect(subject.competitions).to be_a Array
+      end
     end
 
-    it 'with include' do
-      expect(subject.competitions(options: :seasons)).to be_a Array
+    it 'must return competitions with seasons hash' do
+      VCR.use_cassette('competitions_includes_seasons') do
+        expect(subject.competitions(options: :seasons)).to be_a Array
+      end
     end
 
-    it 'with params' do
-      expect(subject.competitions(13)).to be_a Hash
+    it 'must return one of competition' do
+      VCR.use_cassette('one_competition') do
+        expect(subject.competitions(43)).to be_a Hash
+      end
+    end
+
+    it 'must return exception if unavailable request' do
+      VCR.use_cassette('unpaid_plan') do
+        expect(subject.competitions(13)).to raise_error
+      end
     end
   end
 
   describe '.seasons' do
-    it 'without params' do
-      expect(subject.seasons).to be_a Array
+    it 'must return all available seasons' do
+      VCR.use_cassette('all_seasons') do
+        expect(subject.seasons).to be_a Array
+      end
     end
 
-    it 'with params' do
-      expect(subject.seasons(356)).to be_a Hash
+    it 'must return only one season' do
+      VCR.use_cassette('one_season') do
+        expect(subject.seasons(350)).to be_a Hash
+      end
     end
   end
 
   describe '.teams' do
-    it 'teams_by_season' do
-      expect(subject.teams_by_season(14)).to be_a Hash
+    it 'must return teams of season' do
+      VCR.use_cassette('teams_list') do
+        expect(subject.teams_by_season(350)).to be_a Array
+      end
     end
 
-    it 'teams_by_id' do
-      expect(subject.teams_by_id(516)).to be_a Hash
+    it 'must return only one team' do
+      VCR.use_cassette('one_team') do
+        expect(subject.teams_by_id(516)).to be_a Hash
+      end
     end
 
-    it 'matches_by_team_season' do
-      expect(subject.matches_by_team_season(518, 350)).to be_a Hash
+    it 'must return all team matches in the season' do
+      VCR.use_cassette('team_matches') do
+        expect(subject.matches_by_team_season(518, 350)).to be_a Hash
+      end
     end
   end
 end

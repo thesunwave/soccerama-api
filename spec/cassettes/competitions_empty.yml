@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.soccerama.pro/v1.1/competitions?api_token=79tYQvxtoJU4u0wA2G9c7x0xCES6wj3WlYLDZP1XJKL9Zf6SBLiIFhkq2eOv&include
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.11.1
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Limit:
+      - '1000'
+      X-Ratelimit-Remaining:
+      - '997'
+      Date:
+      - Sat, 16 Jul 2016 14:24:35 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":43,"name":"Superliga","active":true},{"id":66,"name":"Premiership","active":true}]}'
+    http_version: 
+  recorded_at: Sat, 16 Jul 2016 14:24:35 GMT
+recorded_with: VCR 3.0.1

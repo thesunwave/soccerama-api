@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.soccerama.pro/v1.1/teams/season/350?api_token=79tYQvxtoJU4u0wA2G9c7x0xCES6wj3WlYLDZP1XJKL9Zf6SBLiIFhkq2eOv&include
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.11.1
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Limit:
+      - '1000'
+      X-Ratelimit-Remaining:
+      - '998'
+      Date:
+      - Sat, 16 Jul 2016 14:45:54 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":146,"name":"K\u00f8benhavn","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/146.png","twitter":null,"venue_id":427},{"id":173,"name":"AaB","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/173.png","twitter":null,"venue_id":198},{"id":513,"name":"Midtjylland","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/513.png","twitter":null,"venue_id":270},{"id":514,"name":"Randers","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/514.png","twitter":null,"venue_id":4117},{"id":515,"name":"Br\u00f8ndby","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/515.png","twitter":null,"venue_id":300},{"id":516,"name":"Nordsj\u00e6lland","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/516.png","twitter":null,"venue_id":729},{"id":517,"name":"Hobro","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/517.png","twitter":null,"venue_id":736},{"id":518,"name":"Esbjerg","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/518.png","twitter":null,"venue_id":427},{"id":519,"name":"S\u00f8nderjyskE","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/519.png","twitter":null,"venue_id":730},{"id":520,"name":"OB","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/520.png","twitter":null,"venue_id":731},{"id":628,"name":"Viborg","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/628.png","twitter":null,"venue_id":739},{"id":629,"name":"AGF","logo":"https:\/\/soccerama.pro\/images\/teams\/DEN\/629.png","twitter":null,"venue_id":2424}]}'
+    http_version: 
+  recorded_at: Sat, 16 Jul 2016 14:45:54 GMT
+recorded_with: VCR 3.0.1
