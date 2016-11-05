@@ -15,9 +15,9 @@ module Soccerama
         resp = JSON.parse(response.body)
         if resp['error']
           if resp['error']['code'] == 401
-            raise Soccerama::Exceptions::UnpaidPlanException
+            raise Soccerama::Exceptions::UnpaidPlanException, resp['error']['message']
           elsif resp['error']['code'] == 500
-            raise Soccerama::Exceptions::InvalidRequest
+            raise Soccerama::Exceptions::InvalidRequest, resp['error']['message']
           end
         else
           resp

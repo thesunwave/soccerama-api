@@ -25,7 +25,7 @@ describe Soccerama::Client do
 
     it 'must return exception if unavailable request' do
       VCR.use_cassette('unpaid_plan') do
-        expect(subject.competitions(13)).to raise_error
+        expect { subject.competitions(13) }.to raise_error(Soccerama::Exceptions::UnpaidPlanException)
       end
     end
   end
