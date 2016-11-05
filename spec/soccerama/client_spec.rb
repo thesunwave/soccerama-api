@@ -6,20 +6,21 @@ describe Soccerama::Client do
 
   describe '.competitions' do
     it 'must return array of competitions' do
-      VCR.use_cassette('competitions_empty') do
-        expect(subject.competitions).to be_a Array
+      VCR.use_cassette('competitions_list') do
+        expect(subject.competitions.any? { |h| h['active'] == true }).to be_truthy
       end
     end
 
     it 'must return competitions with seasons hash' do
       VCR.use_cassette('competitions_includes_seasons') do
-        expect(subject.competitions(options: :seasons)).to be_a Array
+        competitions = subject.competitions(options: :seasons)
+        expect(competitions.first).to include('id', 'name', 'active', 'seasons')
       end
     end
 
     it 'must return one of competition' do
       VCR.use_cassette('one_competition') do
-        expect(subject.competitions(43)).to be_a Hash
+        expect(subject.competitions(43)).to include('id' => 43)
       end
     end
 
@@ -33,13 +34,16 @@ describe Soccerama::Client do
   describe '.seasons' do
     it 'must return all available seasons' do
       VCR.use_cassette('all_seasons') do
-        expect(subject.seasons).to be_a Array
+        seasons = subject.seasons
+        expect(seasons.first).to include('id', 'competition_id', 'name', 'active')
       end
     end
 
     it 'must return only one season' do
       VCR.use_cassette('one_season') do
-        expect(subject.seasons(350)).to be_a Hash
+        season = subject.seasons(350)
+        expect(season).to include('id' => 350)
+        expect(season).to include('id', 'competition_id', 'name', 'active')
       end
     end
   end
@@ -47,19 +51,22 @@ describe Soccerama::Client do
   describe '.teams' do
     it 'must return teams of season' do
       VCR.use_cassette('teams_list') do
-        expect(subject.teams_by_season(350)).to be_a Array
+        teams = subject.teams_by_season(350)
+        expect(teams.first).to include('id', 'name', 'logo', 'twitter', 'venue_id')
       end
     end
 
     it 'must return only one team' do
       VCR.use_cassette('one_team') do
-        expect(subject.teams_by_id(516)).to be_a Hash
+        expect(subject.teams_by_id(516)).to include('id' => 516)
       end
     end
 
     it 'must return all team matches in the season' do
       VCR.use_cassette('team_matches') do
-        expect(subject.matches_by_team_season(518, 350)).to be_a Hash
+        matches = subject.matches_by_team_season(518, 350)
+        expect(matches).to include('id' => 518)
+        expect(matches).to include('matches')
       end
     end
   end
