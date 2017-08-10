@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/soccerama.svg)](https://badge.fury.io/rb/soccerama)
 
-The gem is development currently and so his code might be smell.
+The gem is development currently and so his code might be smell. Feel free to contribute.
 
 ## Installation
 
